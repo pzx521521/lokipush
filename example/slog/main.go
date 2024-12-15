@@ -10,7 +10,7 @@ func main() {
 	//promtail_test will be a label {"job","promtail_test"} for service_name detect
 	c := lokipush.NewConfig(pushURL, "promtail_test")
 	//Labels suport
-	c = c.AddLabels(lokipush.Label{"tag", "tagVal"})
+	c.AddLabels(lokipush.Label{"tag", "tagVal"})
 	//bathauth
 	c.UserName = "<your-username>"
 	c.Password = "<your-password>"
