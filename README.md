@@ -74,10 +74,10 @@ func main() {
 
 
 ```
-example for zap:
-`exmple/zap`
-example for log:
-`lokipush_test.go/TestLog`
+example for zap:  
+`exmple/zap`  
+example for log:  
+`lokipush_test.go/TestLog`  
 
 # reference
 ## [loki-grpc reference](https://grafana.com/docs/loki/latest/reference/loki-http-api/#ingest-logs): 
