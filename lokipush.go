@@ -160,7 +160,7 @@ func (lp *LokiPusher) sendAndResetBatch(t *time.Ticker) {
 		if t != nil && len(lp.batchEntry) < 2*lp.config.BatchMaxSize {
 			return
 		}
-		lp.log.Warn("batch size is too large when Backoff Retry Err,save to file and resetting batch to 0",
+		lp.log.Warn("batch size is too large or shutdown push when Backoff Retry Err,save to file and resetting batch to 0",
 			slog.Int("batch_size", len(lp.batchEntry)))
 		lp.saveToFile()
 		lp.batchEntry = lp.batchEntry[:0]
