@@ -2,22 +2,22 @@
 [promtail-client](https://github.com/afiskon/promtail-client) has been archived  
 I added the following new features:
 + auth
-- [x] BaseAuth by name and password for grafana cloud
+	- [x] BaseAuth by name and password for grafana cloud
 + suport for others log libs
-- [x] slog 
-- [x] zap
-- [x] log(no level default)
-- [x] output both stdout and above libs
+	- [x] slog 
+	- [x] zap
+	- [x] log(no level default)
+	- [x] output both stdout and above libs
 + add push-type by
-- [x] grpc(use org lib, and default)
-- [x] http
-- [x] http-gzip(new)
+	- [x] grpc(use org lib, and default)
+	- [x] http
+	- [x] http-gzip(new)
 + backoff & backup it locally when network error
-- [x] RetryCount & MaxRetryDuration([promtail-client](https://github.com/afiskon/promtail-client) will send always)
-- [x] save it locally when retry failed([promtail-client](https://github.com/afiskon/promtail-client) will sing memory causes memory explosion)
+	- [x] RetryCount & MaxRetryDuration([promtail-client](https://github.com/afiskon/promtail-client) will send always)
+	- [x] save it locally when retry failed([promtail-client](https://github.com/afiskon/promtail-client) will sing memory causes memory explosion)
 + loki index(labels) & metadata
-- [x] add labels(loki index)
-- [x] add metadata(grpc only)
+	- [x] add labels(loki index)
+	- [x] add metadata(grpc only)
 # use
 ```shell
 go get github.com/pzx521521/lokipush
