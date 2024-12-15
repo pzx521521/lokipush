@@ -1,0 +1,31 @@
+
+
+
+query:
+	curl "logs-prod-020.grafana.net/loki/api/v1/query" \
+	  -H "Authorization: Basic MTA2NjczNzpnbGNfZXlKdklqb2lNVEk0T1RBeU55SXNJbTRpT2lKemRHRmpheTB4TVRBNE9UVTRMV2h0TFhKbFlXUXRjbmNpTENKcklqb2lNakV3YzNKRlNURnNTamMwVG0xalZIbDFZamt3T1RWdUlpd2liU0k2ZXlKeUlqb2ljSEp2WkMxaGNDMXpiM1YwYUdWaGMzUXRNU0o5ZlE9PQ==" \
+	  --data-urlencode 'query=sum(rate({job=~".+"}[10m])) by (level)'
+
+push:
+	curl -H "Content-Type: application/json" \
+		-H "Authorization: Basic MTA2NjczNzpnbGNfZXlKdklqb2lNVEk0T1RBeU55SXNJbTRpT2lKemRHRmpheTB4TVRBNE9UVTRMV2h0TFhKbFlXUXRjbmNpTENKcklqb2lNakV3YzNKRlNURnNTamMwVG0xalZIbDFZamt3T1RWdUlpd2liU0k2ZXlKeUlqb2ljSEp2WkMxaGNDMXpiM1YwYUdWaGMzUXRNU0o5ZlE9PQ==" \
+		-s -X POST "logs-prod-020.grafana.net/loki/api/v1/push" \
+		--data-raw '{"streams": [{ "stream": { "job": "bar2" }, "values": [ [ "1734135699246000000", "hhhhhhhhhhhh" ] ] }]}'
+pushLevel:
+	curl -H "Content-Type: application/json" \
+		-H "Authorization: Basic MTA2NjczNzpnbGNfZXlKdklqb2lNVEk0T1RBeU55SXNJbTRpT2lKemRHRmpheTB4TVRBNE9UVTRMV2h0TFhKbFlXUXRjbmNpTENKcklqb2lNakV3YzNKRlNURnNTamMwVG0xalZIbDFZamt3T1RWdUlpd2liU0k2ZXlKeUlqb2ljSEp2WkMxaGNDMXpiM1YwYUdWaGMzUXRNU0o5ZlE9PQ==" \
+		-s -X POST "logs-prod-020.grafana.net/loki/api/v1/push" \
+		--data-raw '{"streams": [{ "stream": { "app": "bar2" }, "values": [ [ "1734135699247000000", "{\"level\":\"info\", \"msg\":\"hello level\"}" ] ] }]}'
+pushMeta:
+	curl -H "Content-Type: application/json" \
+		-H "Authorization: Basic MTA2NjczNzpnbGNfZXlKdklqb2lNVEk0T1RBeU55SXNJbTRpT2lKemRHRmpheTB4TVRBNE9UVTRMV2h0TFhKbFlXUXRjbmNpTENKcklqb2lNakV3YzNKRlNURnNTamMwVG0xalZIbDFZamt3T1RWdUlpd2liU0k2ZXlKeUlqb2ljSEp2WkMxaGNDMXpiM1YwYUdWaGMzUXRNU0o5ZlE9PQ==" \
+		-s -X POST "logs-prod-020.grafana.net/loki/api/v1/push" \
+		--data-raw '{"streams": [{ "stream": { "app": "meta" }, "values": [ [ "1734135699246000000", "{\"level\":\"info\", \"msg\":\"hello meta\"}" , {"metaKey":"metaValue"}] ] }]}'
+
+labels:
+	curl -H "Authorization: Basic MTA2NjczNzpnbGNfZXlKdklqb2lNVEk0T1RBeU55SXNJbTRpT2lKemRHRmpheTB4TVRBNE9UVTRMV2h0TFhKbFlXUXRjbmNpTENKcklqb2lNakV3YzNKRlNURnNTamMwVG0xalZIbDFZamt3T1RWdUlpd2liU0k2ZXlKeUlqb2ljSEp2WkMxaGNDMXpiM1YwYUdWaGMzUXRNU0o5ZlE9PQ==" \
+    	"tempo-prod-14-prod-ap-southeast-1.grafana.net/loki/api/v1/labels?start=1734123635265000000&end=1734145235265000000"
+
+version:
+	curl -H "Authorization: Basic MTA2NjczNzpnbGNfZXlKdklqb2lNVEk0T1RBeU55SXNJbTRpT2lKemRHRmpheTB4TVRBNE9UVTRMV2h0TFhKbFlXUXRjbmNpTENKcklqb2lNakV3YzNKRlNURnNTamMwVG0xalZIbDFZamt3T1RWdUlpd2liU0k2ZXlKeUlqb2ljSEp2WkMxaGNDMXpiM1YwYUdWaGMzUXRNU0o5ZlE9PQ==" \
+	  "logs-prod-020.grafana.net/loki/api/v1/status/buildinfo" \
