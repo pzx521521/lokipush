@@ -14,7 +14,7 @@ I added the following new features:
 	- [x] http-gzip(new)
 + backoff & backup it locally when network error
 	- [x] RetryCount & MaxRetryDuration([promtail-client](https://github.com/afiskon/promtail-client) will send always)
-	- [x] save it locally when retry failed([promtail-client](https://github.com/afiskon/promtail-client) will sing memory causes memory explosion)
+	- [x] save it locally when retry failed([promtail-client](https://github.com/afiskon/promtail-client) will use memory causes memory explosion)
 + loki index(labels) & metadata
 	- [x] add labels(loki index)
 	- [x] add metadata(grpc only)
